@@ -1,24 +1,74 @@
-import React from "react";
-
+import React, { useState } from "react";
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
+import { TrafficLight } from "./TrafficLight";
 
-//create your first component
 const Home = () => {
+	// SEMAFORO DE DOS LUCES
+	const [lights, setLights] = useState([
+		{
+			color: "red",
+			on: true,
+		},
+		{
+			color: "green",
+			on: false,
+		},
+	]);
+	// SEMAFORO DE TRES LUCES
+	const [lights1, setLights1] = useState([
+		{
+			color: "red",
+			on: true,
+		},
+		{
+			color: "yellow",
+			on: false,
+		},
+		{
+			color: "green",
+			on: false,
+		},
+	]);
+	// SEMAFORO DE CUATRO LUCES
+	const [lights2, setLights2] = useState([
+		{
+			color: "red",
+			on: true,
+		},
+		{
+			color: "yellow",
+			on: false,
+		},
+		{
+			color: "green",
+			on: false,
+		},
+		{
+			color: "green",
+			on: false,
+		},
+	]);
 	return (
-		<div>
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="d-flex w-100 h-100 justify-content-center align-items-center">
+			<TrafficLight lights={lights} setLights={setLights} />
+			<TrafficLight lights={lights1} setLights={setLights1} />
+			<TrafficLight lights={lights2} setLights={setLights2} />
+			{/* ASI ERA COMO SE VEIA ANTES DE CONSTRUIR COMPONENTES
+			<div className="box">
+				<div
+					className={`light red${color === "red" ? " on" : ""}`}
+					onClick={(e) => setColor("red")}
+				/>
+				<div
+					className={`light yellow${color === "yellow" ? " on" : ""}`}
+					onClick={(e) => setColor("yellow")}
+				/>
+				<div
+					className={`light green${color === "green" ? " on" : ""}`}
+					onClick={(e) => setColor("green")}
+				/>
+			</div> */}
 		</div>
 	);
 };
